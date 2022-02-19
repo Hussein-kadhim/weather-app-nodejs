@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather</title>
+  <link rel="icon" href="/img/weather-forecast.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+
+
+</head>
+
+<body>
+  <div class="main-content">
+    {{>header}}
+    <form>
+      <div class="input-text-group">
+        <div class="label">
+          <p class="label-text">Use this site to get your weather!</p>
+        </div>
+        <div class="input">
+          <input class="location-input" placeholder="Write your location here...." type="text">
+          <button class="search-button">Search</button>
+        </div>
+      </div>
+    </form>
+
+  {{!-- <form >
+    <div class="input-group">
+      <label for="weather">Use this site to get your weather!</label>
+      <input type="text" id="weather">
+    </div>
+    <button class="search-button">Search</button>
+  </form> --}}
+
+    <div class="message">
+      <p id="message-1"></p>
+      <p id="message-2"></p>
+      <p id="localtime"></p>
+      <div id="weather-icon"></div>
+    </div>
+  </div>
+  {{>footer}}
+  <script src="/js/app.js"></script>
+</body>
+
+</html>

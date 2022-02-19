@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:root {
+  --colors-blue: #012a4a;
+  --colors-black: #000000;
+  --colors-white: #ffffff;
+}
+
+.navbar {
+  background: var(--colors-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 48px 0;
+}
+
+.container {
+  margin: auto;
+  padding: 0 160px;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.logo {
+  margin-bottom: 16px;
+  color: var(--colors-white);
+  font-size: 24px;
+}
+
+.links > a {
+  color: var(--colors-white);
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.location-input {
+  width: 467px;
+  height: 35px;
+  border: 1px solid var(--colors-black);
+  color: var(--colors-black);
+  border-radius: 4%;
+  padding: 5px;
+}
+
+.location-input:focus {
+  border: 2px solid var(--colors-black);
+  border-radius: 0%;
+}
+
+.input-text-group {
+  display: grid;
+  justify-content: center;
+  padding-top: 187px;
+}
+
+.search-button {
+  width: 115px;
+  height: 48px;
+  border: none;
+  border-radius: none;
+  background-color: var(--colors-blue);
+  color: var(--colors-white);
+}
+
+#weather-icon img {
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+#message-1 {
+  display: grid;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#message-2,
+p#localtime,
+#weather-icon {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  color: var(--colors-white);
+  background-color: var(--colors-blue);
+}
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+}
+
+.about-page,
+.error-message,
+.help-text {
+  padding-top: 50px;
+}
+.about-img {
+  width: 250px;
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container {
+    padding: 0px 15px 0 0;
+  }
+
+  .main-content {
+    overflow-y: hidden;
+  }
+
+  .logo {
+    padding: 0 0 6px 6px;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .links > a {
+    font-size: 10px;
+  }
+
+  .label-text {
+    font-size: 12px;
+  }
+
+  .input {
+    display: grid;
+  }
+
+  .location-input {
+    width: 300px;
+  }
+
+  .search-button {
+    width: 312px;
+  }
+
+  #message-1 {
+    font-size: 11px;
+  }
+
+  #message-2,
+  p#localtime,
+  #weather-icon {
+    font-size: 9px;
+  }
+
+  .footer-text {
+    font-size: 13px;
+  }
+
+  .about-page.container {
+    margin: 25px;
+  }
+
+  .about-img {
+    width: 125px;
+  }
+
+  .help-text {
+    margin: 60px;
+  }
+}
