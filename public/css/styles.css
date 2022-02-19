@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   color: #333333;
   font-family: arial;
   display: flex;
@@ -114,20 +115,22 @@ footer {
     padding: 0px 15px 0 0;
   }
 
-  .main-content {
-    overflow-y: hidden;
+  .logo {
+    padding: 0 0 6px 6px;
+    font-size: 14px;
+    cursor: pointer;
   }
 
   .logo {
-    padding: 0 0 6px 6px;
-  }
-
-  .navbar {
-    width: 100%;
+    padding-left: 15px;
   }
 
   .links > a {
     font-size: 10px;
+  }
+
+  .links {
+    padding-bottom: 10px;
   }
 
   .label-text {
@@ -139,11 +142,11 @@ footer {
   }
 
   .location-input {
-    width: 300px;
+    width: 280px;
   }
 
   .search-button {
-    width: 312px;
+    width: 292px;
   }
 
   #message-1 {
