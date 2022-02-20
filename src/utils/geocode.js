@@ -10,8 +10,8 @@ const geocode = async (address) => {
   try {
     const  res = await fetch(url)
     const body = await res.json()
-    if(body.features && body.features?.length === 0){
-      return 'Unable to find location. Try another search'
+    if(body.features && body.features.length === 0){
+      return {error: 'Unable to find location. Try another search'}
     }else{
       const data = {
         latitude: body.features[0].center[1],
@@ -22,7 +22,7 @@ const geocode = async (address) => {
     }
 
   } catch (error) {
-    return 'Unable to connect to location services!'
+    return {error: 'Unable to connect to location services!'}
   }
 };
 

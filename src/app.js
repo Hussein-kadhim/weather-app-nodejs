@@ -56,8 +56,8 @@ app.get('/weather', async (req, res) => {
         geocodeData.longitude
       );
     
-      if(!forecastInfo){
-        res.send({error: 'Unable to find location. Try another search'})
+      if(forecastInfo?.error){
+        res.send({error: forecastInfo.error})
         return
       }
       
@@ -81,7 +81,6 @@ app.get('/products', (req, res) => {
     });
   }
 
-  console.log(req.query);
   res.send({
     products: [],
   });
