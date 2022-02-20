@@ -1,9 +1,8 @@
-
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const geocode = require('./utils/geocode')
-const forecast = require('./utils/forecast')
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,52 +41,57 @@ app.get('/help', (req, res) => {
   });
 });
 
-app.get('/weather', (req, res) => {
-  
-  if(!req.query.address){
-   return res.send({
-     error: 'You must to use a address'
-   })
+app.get('/weather', async (req, res) => {
+  if (!req.query.address) {
+    return res.send({
+      error: 'You must to use a address',
+    });
   }
 
-  geocode(req.query.address, (error, { latitude, longitude, location }) => {
-    console.log(location);
-if (error) {
-  return res.send({ error })
-}
-
-forecast(latitude, longitude,  (forecastInfo, error) => {
-  if(error){
-    return res.send({ error })
+  try {
+    const geocodeData = await geocode(req.query.address);
+    try {
+      const forecastInfo = await forecast(
+        geocodeData.latitude,
+        geocodeData.longitude
+      );
+    
+      if(!forecastInfo){
+        res.send({error: 'Unable to find location. Try another search'})
+        return
+      }
+      
+      res.send({
+        forecast: forecastInfo,
+        location: geocodeData.location,
+        address: req.query.address,
+      });
+    } catch (error) {
+      return res.send({ error });
+    }
+  } catch (error) {
+    res.send({ error });
   }
-
-  res.send({
-   'forecast': forecastInfo,
-    location,
-   'address': req.query.address
-  })
-})
-  })
 });
 
 app.get('/products', (req, res) => {
-  if(!req.query.search){
-   return res.send({
-      error: 'You must provide a search term'
-    })
+  if (!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term',
+    });
   }
 
   console.log(req.query);
   res.send({
-    products: []
-  })
-})
+    products: [],
+  });
+});
 
 app.get('/help/*', (req, res) => {
-  res.render('404',{
+  res.render('404', {
     title: '404',
     name: 'Hussein Kadhim',
-    error: 'Help article not found, try again'
+    error: 'Help article not found, try again',
   });
 });
 
@@ -95,7 +99,7 @@ app.get('*', (req, res) => {
   res.render('404', {
     title: '404',
     name: 'Hussein Kadhim',
-    errorMessage: 'Page not found, try again'
+    errorMessage: 'Page not found, try again',
   });
 });
 

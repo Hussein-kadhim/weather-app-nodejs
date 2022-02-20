@@ -1,30 +1,29 @@
-const request = require('request');
+// @ts-check
+const fetch = require('node-fetch')
 require('dotenv').config();
 
-const forecast = (latitude, longitude, callback) => {
+const forecast = async (latitude, longitude) => {
   const url = `http://api.weatherstack.com/current?access_key=${process.env.ACCESS_KEY}&query=${latitude},
     ${longitude}`;
 
-  request({ url, json: true }, (error, response) => {
-    const { error: responseError, current, location } = response.body;
-    if (error) {
-      callback( undefined, 'unable to connect to the weather service');
-    } else if (responseError) {
-      callback(undefined, 'unable to find location');
-    } else {
-      const { temperature, feelslike, weather_descriptions, weather_icons } = current;
+    try {
+      const res = await fetch(url)
+      const body = await res.json()
+      if(!body.success){
+        return body.success
+      }
+      const { temperature, feelslike, weather_descriptions, weather_icons } = body?.current;
 
       const forecastInfo = {
-        text: `${weather_descriptions}. It is currently ${temperature} degrees out. It feel like ${feelslike} degrees out.`,
+        text: `${weather_descriptions.join(' ')}. It is currently ${temperature} degrees out. It feel like ${feelslike} degrees out.`,
         weather_icons,
-        localtime: location.localtime
+        localtime: body.location.localtime
       }
-
-      callback(
-         forecastInfo, undefined
-      );
+       return forecastInfo
+    } catch (error) {
+      console.error(error);
+      return('unable to connect to the weather service');
     }
-  });
-};
+  }
 
 module.exports = forecast;
