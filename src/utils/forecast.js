@@ -1,4 +1,3 @@
-// @ts-check
 const fetch = require('node-fetch')
 require('dotenv').config();
 
@@ -9,9 +8,9 @@ const forecast = async (latitude, longitude) => {
     try {
       const res = await fetch(url)
       const body = await res.json()
-      if(!body.success){
-        return body.success
-      }
+    if(body.error){
+      return {error: body.error.info}
+    }
       const { temperature, feelslike, weather_descriptions, weather_icons } = body?.current;
 
       const forecastInfo = {
@@ -22,7 +21,7 @@ const forecast = async (latitude, longitude) => {
        return forecastInfo
     } catch (error) {
       console.error(error);
-      return('unable to connect to the weather service');
+      return({error: 'unable to connect to the weather service'});
     }
   }
 
