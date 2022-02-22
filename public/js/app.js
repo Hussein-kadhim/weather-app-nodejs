@@ -2,6 +2,7 @@ const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 const messageOne = document.querySelector('#message-1');
 const messageTwo = document.querySelector('#message-2');
+const messageThree = document.querySelector('#message-3');
 const wrapper = document.querySelector('.wrapper');
 const weatherIcon = document.getElementById('weather-icon');
 const localtime = document.getElementById('localtime');
@@ -13,6 +14,7 @@ weatherForm.addEventListener('submit', (e) => {
 
   messageOne.textContent = 'Loading...';
   messageTwo.textContent = '';
+  messageThree.textContent = '';
   localtime.textContent = '';
   weatherIcon.innerHTML = '';
 
@@ -30,6 +32,7 @@ weatherForm.addEventListener('submit', (e) => {
 
           messageOne.textContent = data.location;
           messageTwo.textContent = data.forecast.text;
+          messageThree.textContent = data.forecast.details;
           localtime.textContent = data.forecast.localtime;
         }
       });

@@ -75,6 +75,7 @@ body {
 
 #weather-icon img {
   border-radius: 50%;
+  height: 45px;
 }
 
 #weather-icon {
@@ -86,12 +87,15 @@ body {
   display: grid;
   text-align: center;
   padding-top: 10px;
+  font-weight: bold;
 }
 
 #message-2,
+#message-3,
 p#localtime {
   display: flex;
   justify-content: center;
+  font-size: 12px;
 }
 
 footer {
@@ -153,12 +157,14 @@ footer {
   }
 
   #message-1 {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: bold;
   }
 
   #message-2,
+  #message-3,
   p#localtime {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   #weather-icon img {
