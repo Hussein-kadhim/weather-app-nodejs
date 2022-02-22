@@ -77,6 +77,11 @@ body {
   border-radius: 50%;
 }
 
+#weather-icon {
+  display: flex;
+  justify-content: center;
+}
+
 #message-1 {
   display: grid;
   text-align: center;
@@ -158,6 +163,11 @@ footer {
 
   #weather-icon img {
     height: 40px;
+  }
+
+  #weather-icon {
+    display: flex;
+    justify-content: center;
   }
 
   .footer-text {
