@@ -113,7 +113,7 @@ footer {
   width: 250px;
 }
 
-@media (min-width: 320px) and (max-width: 425px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .container {
     padding: 0px 15px 0 0;
   }
